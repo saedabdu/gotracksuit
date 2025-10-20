@@ -71,3 +71,43 @@ deno task build
 ```sh
 deno check .
 ```
+
+### Building with Docker
+
+To build the Docker image locally:
+
+```bash
+make build
+```
+
+This will:
+- Auto-detect your architecture (ARM64 or x86_64)
+- Build the image with mise
+
+
+### Kubernetes Deployment
+
+To deploy the service to Kubernetes (Minikube):
+
+1. Clone the repository and navigate to the project directory (if not already done so):
+   ```bash
+   git clone https://github.com/saedabdu/gotracksuit.git
+   cd gotracksuit
+   ```
+
+2. Check prerequisites:
+   ```bash
+   make check
+   ```
+
+3. Deploy to Minikube:
+   ```bash
+   make deploy
+   ```
+
+4. Set up port forwarding to access the service:
+   ```bash
+   make port-forward
+   ```
+
+5. Access the service at http://localhost:8080
