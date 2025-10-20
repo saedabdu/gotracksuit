@@ -72,6 +72,8 @@ deno task build
 deno check .
 ```
 
+---
+
 ### Building with Docker
 
 To build the Docker image locally:
@@ -111,3 +113,21 @@ To deploy the service to Kubernetes (Minikube):
    ```
 
 5. Access the service at http://localhost:8080
+
+
+## Troubleshooting
+
+- **Connection issues**
+  ```bash
+  # Ensure Docker and Minikube are running
+  make check
+  ```
+
+- **Port conflicts**
+  If port 8080 is already in use, the `make port-forward` command will automatically kill existing processes using that port.
+
+- **Container logs**
+  ```bash
+  # Check container logs
+  kubectl logs -l app=tracksuit-backend
+  ```
