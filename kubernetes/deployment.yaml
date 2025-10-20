@@ -1,0 +1,159 @@
+# Tracksuit Backend - Kubernetes Deployment (Local Minikube)
+# This file contains all Kubernetes resources for the backend service with SQLite persistence
+#
+# HIGH AVAILABILITY NOTES:
+# This local deployment uses SQLite (single replica) for simplicity.
+# For production HA deployment, I would use:
+#   - replicas: 3+ (spread across availability zones)
+#   - database: RDS PostgreSQL Multi-AZ
+#   - Add: HorizontalPodAutoscaler, PodDisruptionBudget
+
+---
+# Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tracksuit
+  labels:
+    name: tracksuit
+    environment: local
+
+---
+# PersistentVolumeClaim for SQLite storage
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sqlite-storage
+  namespace: tracksuit
+  labels:
+    app: tracksuit-backend
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
+
+---
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tracksuit-backend
+  namespace: tracksuit
+  labels:
+    app: tracksuit-backend
+    environment: local
+spec:
+  # LOCAL: Single replica due to SQLite file-locking limitation
+  replicas: 1
+
+  # LOCAL: Recreate strategy (terminates old pod before creating new)
+  # PRODUCTION HA: RollingUpdate with maxSurge:1, maxUnavailable:0
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tracksuit-backend
+  template:
+    metadata:
+      labels:
+        app: tracksuit-backend
+        version: v1
+    spec:
+      # PRODUCTION HA: I would add pod anti-affinity to spread across AZs
+      # affinity:
+      #   podAntiAffinity:
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #     - weight: 100
+      #       podAffinityTerm:
+      #         labelSelector:
+      #           matchExpressions:
+      #           - key: app
+      #             operator: In
+      #             values: [tracksuit-backend]
+      #         topologyKey: topology.kubernetes.io/zone
+
+      containers:
+      - name: backend
+        # I had to build this for diff ARCH for better dev expereince.
+        # For ARM64 (Apple Silicon): we use :arm-v3 tag
+        # For production x86_64: we use :latest tag
+        image: saedabdu/tracksuit-backend:arm-v3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        env:
+        - name: SERVER_PORT
+          value: "8080"
+        # PRODUCTION HA: I would add database connection from secret
+        # - name: DATABASE_URL
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: db-credentials
+        #       key: connection_string
+
+        # LOCAL: SQLite storage (file-based)
+        # PRODUCTION HA: Remove this, I would use RDS PostgreSQLAurora)
+        volumeMounts:
+        - name: sqlite-storage
+          mountPath: /app/tmp
+        livenessProbe:
+          httpGet:
+            path: /_health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /_health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1001
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+      # LOCAL: PVC for SQLite
+      # PRODUCTION HA: We remove this, as we 'd use RDS
+      volumes:
+      - name: sqlite-storage
+        persistentVolumeClaim:
+          claimName: sqlite-storage
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: tracksuit-backend
+  namespace: tracksuit
+  labels:
+    app: tracksuit-backend
+spec:
+  type: ClusterIP
+  selector:
+    app: tracksuit-backend
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  sessionAffinity: None
