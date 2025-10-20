@@ -1,0 +1,11 @@
+.main {
+  display: grid;
+  grid-template-columns: var(--grid-page);
+  & > * {
+    grid-column: 2 / 3;
+  }
+}
+
+.insights {
+  margin-top: var(--size-10);
+}

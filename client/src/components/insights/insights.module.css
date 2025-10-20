@@ -1,0 +1,45 @@
+.heading {
+  font: var(--text-2xl);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-6);
+  margin-top: var(--size-6);
+}
+
+.insight {
+  padding: var(--size-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-grey-300);
+}
+
+.insight-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: var(--text-sm);
+  color: var(--color-text-light);
+}
+
+.insight-meta-details {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+}
+
+.insight-delete {
+  width: var(--size-5);
+  height: var(--size-5);
+  cursor: pointer;
+  transition: stroke 250ms ease;
+  &:hover {
+    stroke: var(--color-red-500);
+  }
+}
+
+.insight-content {
+  font: var(--text-lg);
+  margin: var(--size-4) 0 0;
+}

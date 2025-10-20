@@ -1,0 +1,188 @@
+:root {
+  /* Fonts */
+  --font-text: "Quicksand Variable", sans-serif;
+
+  /* Typesets */
+  --text-xs: var(--scale-000) / 1.375 var(--font-text);
+  --text-sm: var(--scale-00) / 1.375 var(--font-text);
+  --text-md: var(--scale-0) / 1.375 var(--font-text);
+  --text-lg: var(--scale-1) / 1.375 var(--font-text);
+  --text-xl: var(--scale-2) / 1.375 var(--font-text);
+  --text-2xl: var(--weight-medium) var(--scale-3) / 1.25 var(--font-text);
+
+  /* Font scale */
+  --scale-000: 0.75rem;
+  --scale-00: 0.875rem;
+  --scale-0: 1rem;
+  --scale-1: 1.125rem;
+  --scale-2: 1.25rem;
+  --scale-3: 1.5rem;
+
+  /* Font weights */
+  --weight-extralight: 200;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --weight-black: 900;
+
+  /* Line heights */
+  --line-none: 1;
+  --line-xs: 1.125;
+  --line-sm: 1.275;
+  --line-md: 1.5;
+  --line-lg: 1.625;
+  --line-xl: 2;
+
+  /* Letter spacings */
+  --letter-xs: -0.05em;
+  --letter-sm: -0.02em;
+  --letter-none: 0em;
+  --letter-lg: 0.025em;
+  --letter-xl: 0.05em;
+
+  /* Size scale */
+  --size-1: 4px;
+  --size-2: 8px;
+  --size-3: 12px;
+  --size-4: 16px;
+  --size-5: 20px;
+  --size-6: 24px;
+  --size-7: 28px;
+  --size-8: 32px;
+  --size-9: 36px;
+  --size-10: 40px;
+  --size-11: 44px;
+  --size-12: 48px;
+  --size-14: 56px;
+  --size-16: 64px;
+  --size-20: 80px;
+  --size-24: 96px;
+  --size-28: 112px;
+  --size-32: 128px;
+  --size-36: 144px;
+  --size-40: 160px;
+  --size-44: 176px;
+  --size-48: 192px;
+  --size-52: 208px;
+  --size-56: 224px;
+  --size-60: 240px;
+  --size-64: 256px;
+  --size-72: 288px;
+  --size-80: 320px;
+  --size-96: 384px;
+  --size-px: 1px;
+  --size-full: 100%;
+  --size-screen: 100vw;
+  --size-min: min-content;
+  --size-max: max-content;
+
+  /* Container widths */
+  --width-xs: 480px;
+  --width-sm: 640px;
+  --width-md: 768px;
+  --width-lg: 1024px;
+  --width-xl: 1440px;
+
+  /* Content widths */
+  --prose-xs: 45ch;
+  --prose-sm: 55ch;
+  --prose-md: 65ch;
+  --prose-lg: 75ch;
+  --prose-xl: 85ch;
+
+  /* Color shortcuts */
+  --color-bg: var(--color-off-white);
+  --color-text: var(--color-black);
+  --color-text-light: var(--color-grey-700);
+
+  /* Palette */
+  --color-off-white: #faf7f0;
+  --color-black: #000000;
+
+  --color-grey-100: #edeaed;
+  --color-grey-300: #e3dfe3;
+  --color-grey-500: #979598;
+  --color-grey-600: #777580;
+  --color-grey-700: #5f5e66;
+
+  --color-purple-700: #4d3777;
+  --color-purple-500: #8f80cc;
+  --color-purple-300: #bdb1e8;
+
+  --color-green-700: #1e7543;
+  --color-green-500: #1cb25c;
+  --color-green-300: #9bdaaa;
+
+  --color-pink-700: #9e0047;
+  --color-pink-500: #f4347f;
+  --color-pink-300: #ff82ac;
+
+  --color-red-700: #b0001c;
+  --color-red-500: #f04f4d;
+  --color-red-300: #f89897;
+
+  /* Border radiuses */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+  --radius-2xl: 50px;
+  --radius-100: 100%;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0px 2px 2px rgba(0, 0, 0, 0.25), 0px 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0px 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Grid */
+  --grid-2: repeat(2, minmax(0, 1fr));
+  --grid-3: repeat(3, minmax(0, 1fr));
+  --grid-4: repeat(4, minmax(0, 1fr));
+  --grid-5: repeat(5, minmax(0, 1fr));
+  --grid-6: repeat(6, minmax(0, 1fr));
+  --grid-7: repeat(7, minmax(0, 1fr));
+  --grid-8: repeat(8, minmax(0, 1fr));
+  --grid-9: repeat(9, minmax(0, 1fr));
+  --grid-10: repeat(10, minmax(0, 1fr));
+  --grid-11: repeat(11, minmax(0, 1fr));
+  --grid-12: repeat(12, minmax(0, 1fr));
+
+  --grid-gap: var(--size-5);
+  --grid-gap-sm: 10px;
+  --grid-page-width: var(--width-xl);
+  --grid-page-gutter: var(--size-4);
+  --grid-page-main: 2 / 3;
+  --grid-page: minmax(var(--grid-page-gutter), 1fr) minmax(
+    0,
+    var(--grid-page-width)
+  ) minmax(var(--grid-page-gutter), 1fr);
+  @media (--mobile) {
+    --grid-page-gutter: var(--size-9);
+  }
+
+  /* Blurs */
+  --blur-xs: blur(4px);
+  --blur-sm: blur(8px);
+  --blur-md: blur(16px);
+  --blur-lg: blur(24px);
+  --blur-xl: blur(40px);
+
+  /* Z-index layers */
+  --layer-1: 10;
+  --layer-2: 20;
+  --layer-3: 30;
+  --layer-4: 40;
+  --layer-5: 50;
+  --layer-below: -1;
+  --layer-top: 2147483647;
+
+  /* Easings */
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+}

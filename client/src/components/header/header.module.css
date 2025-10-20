@@ -1,0 +1,20 @@
+.header {
+  grid-column: 1 / -1 !important;
+  display: grid;
+  grid-template-columns: var(--grid-page);
+  background: var(--color-purple-700);
+  color: var(--color-off-white);
+  padding: var(--size-3) 0;
+}
+
+.inner {
+  grid-column: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font: var(--text-lg);
+  font-weight: var(--weight-medium);
+}

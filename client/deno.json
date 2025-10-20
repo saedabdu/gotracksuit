@@ -1,0 +1,28 @@
+{
+  "name": "@suittracker/client",
+  "exports": {},
+  "$schema": "https://raw.githubusercontent.com/denoland/deno/refs/heads/v2.1/cli/schemas/config-file.v1.json",
+  "tasks": {
+    "dev": "deno run -A --env-file=../.env npm:vite",
+    "build": "deno run -A --env-file=../.env npm:vite build",
+    "test": "deno run -A --env-file=../.env npm:vitest run"
+  },
+  "imports": {
+    "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.2",
+    "@fontsource-variable/quicksand": "npm:@fontsource-variable/quicksand@^5.1.0",
+    "@testing-library/dom": "npm:@testing-library/dom@^10.4.0",
+    "@testing-library/jest-dom": "npm:@testing-library/jest-dom@^6.6.3",
+    "@testing-library/react": "npm:@testing-library/react@^16.1.0",
+    "@types/react": "npm:@types/react@^19.0.2",
+    "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.3.4",
+    "framer-motion": "npm:framer-motion@^11.15.0",
+    "jsdom": "npm:jsdom@^25.0.1",
+    "lucide-react": "npm:lucide-react@^0.468.0",
+    "react": "npm:react@^19.0.0",
+    "react-dom": "npm:react-dom@^19.0.0",
+    "sanitize.css": "npm:sanitize.css@^13.0.0",
+    "vite": "npm:vite@^6.0.3",
+    "vitest": "npm:vitest@^3.0.2",
+    "zod": "npm:zod@^3.23.8"
+  }
+}

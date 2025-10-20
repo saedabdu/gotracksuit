@@ -1,0 +1,31 @@
+.heading {
+  font: var(--text-xl);
+  font-weight: var(--weight-medium);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-6);
+  margin-top: var(--size-6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  font: var(--text-sm);
+  color: var(--color-text-light);
+}
+
+.field-input {
+  font: var(--text-md);
+  color: var(--color-text);
+  border: 1px solid var(--color-grey-300);
+  border-radius: var(--radius-sm);
+  padding: var(--size-4);
+}
+
+.submit {
+  align-self: flex-end;
+}

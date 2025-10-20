@@ -1,0 +1,7 @@
+{
+  "name": "@suittracker/lib",
+  "exports": "./utils/index.ts",
+  "imports": {
+    "zod": "npm:zod@^3.23.8"
+  }
+}

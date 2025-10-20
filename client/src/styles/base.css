@@ -1,0 +1,68 @@
+/**
+  Base styles
+  Normalization covered by sanitize.css
+ */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
+  min-height: 100vh;
+  text-underline-offset: 0.2em;
+  letter-spacing: var(--letter-sm);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: var(--text-md);
+  min-height: 100vh;
+}
+
+/* Reset anchors */
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reset inputs & buttons */
+button,
+input,
+fieldset,
+textarea {
+  all: unset;
+  box-sizing: border-box;
+}
+
+/** Reset lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Reset margins */
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+pre {
+  margin: 0;
+}
+
+/* Reset headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
