@@ -71,9 +71,9 @@ This will:
 - Build the image with mise
 
 
-## Deploy to Kubernetes
+## Deploy to Kubernetes ( Local Minikube )
 
-To deploy the service to Kubernetes (Minikube):
+To deploy the service to Kubernetes:
 
 1. Clone the repository and navigate to the project directory (if not already done so):
    ```bash
@@ -102,6 +102,13 @@ To deploy the service to Kubernetes (Minikube):
 ## Deploy to AWS ECS/Fargate
 
 For minimal operational overhead deployments, we can also use ECS/Fargate for a fully managed, serverless container orchestration on AWS.
+
+The Terraform stack deploys:
+- **Backend**: ECS/Fargate containers with auto-scaling
+- **Frontend**: S3 + CloudFront CDN for static assets
+
+
+**Manual Deployment (without Terraform):**
 
 ```bash
 # 1. Register task definition
