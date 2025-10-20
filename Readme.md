@@ -99,6 +99,23 @@ To deploy the service to Kubernetes (Minikube):
 5. Access the service at http://localhost:8080
 
 
+## Deploy to AWS ECS/Fargate
+
+For minimal operational overhead deployments, we can also use ECS/Fargate for a fully managed, serverless container orchestration on AWS.
+
+```bash
+# 1. Register task definition
+aws ecs register-task-definition \
+  --cli-input-json file://ecs/task-definition.json
+
+# 2. Create ECS cluster
+aws ecs create-cluster --cluster-name tracksuit-prod
+
+# 3. Create service
+aws ecs create-service \
+  --cli-input-json file://ecs/service-definition.json
+```
+
 ## Troubleshooting
 
 - **Connection issues**
