@@ -1,0 +1,54 @@
+{
+  "serviceName": "tracksuit-backend",
+  "cluster": "tracksuit-prod",
+  "taskDefinition": "tracksuit-backend:LATEST",
+  "desiredCount": 3,
+  "launchType": "FARGATE",
+  "platformVersion": "LATEST",
+  "deploymentConfiguration": {
+    "deploymentCircuitBreaker": {
+      "enable": true,
+      "rollback": true
+    },
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100
+  },
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": [
+        "subnet-XXXXXXXXX",
+        "subnet-YYYYYYYYY",
+        "subnet-ZZZZZZZZZ"
+      ],
+      "securityGroups": [
+        "sg-XXXXXXXXX"
+      ],
+      "assignPublicIp": "DISABLED"
+    }
+  },
+  "loadBalancers": [
+    {
+      "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:ACCOUNT_ID:targetgroup/tracksuit-backend/XXXXXXXXX",
+      "containerName": "tracksuit-backend",
+      "containerPort": 8080
+    }
+  ],
+  "healthCheckGracePeriodSeconds": 60,
+  "enableECSManagedTags": true,
+  "propagateTags": "SERVICE",
+  "tags": [
+    {
+      "key": "Environment",
+      "value": "production"
+    },
+    {
+      "key": "Service",
+      "value": "tracksuit-backend"
+    },
+    {
+      "key": "ManagedBy",
+      "value": "terraform"
+    }
+  ]
+}
+
