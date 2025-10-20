@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/saedabdu/gotracksuit/compare/v1.0.0...v1.1.0) (2025-10-20)
+
+
+### Features
+
+* deploy to ecs or fargate for  minimal operational overhead ([6c4d726](https://github.com/saedabdu/gotracksuit/commit/6c4d72647692420d99ee396922bc7c22bbf67213))
+
 ## 1.0.0 (2025-10-20)
 
 
