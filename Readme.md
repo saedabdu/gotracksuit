@@ -60,7 +60,7 @@ deno check .
 
 ---
 
-### Building with Docker
+## Building with Docker
 
 To build the Docker image locally:
 
@@ -73,7 +73,7 @@ This will:
 - Build the image with mise
 
 
-### Kubernetes Deployment
+## Deploy to Kubernetes
 
 To deploy the service to Kubernetes (Minikube):
 
