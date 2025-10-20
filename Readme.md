@@ -26,7 +26,7 @@ command that's right for you.
 
 This repo was developed against Deno 2.4.2.
 
-## Common tasks
+### Common tasks
 
 Most of the commands you'll need are provided by the Deno toolchain. You can run
 tasks either from the repo root or within each package
@@ -52,13 +52,11 @@ cd client
 deno task build
 ```
 
-### Typechecking
+### Type Checking
 
 ```sh
 deno check .
 ```
-
----
 
 ## Building with Docker
 
