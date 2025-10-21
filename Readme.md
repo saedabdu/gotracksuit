@@ -32,7 +32,7 @@ This repo was developed against Deno 2.4.2.
 Most of the commands you'll need are provided by the Deno toolchain. You can run
 tasks either from the repo root or within each package
 
-### Building the server
+#### Building the server
 
 ```sh
 cd server
@@ -43,7 +43,7 @@ This is set up to output an x86_64 Linux ELF at `server/build/server`. You can
 override the target architecture if necessary by setting the `ARCH` environment
 variable; [see the docs here](https://docs.deno.com/runtime/reference/cli/compile/#supported-targets) for possible values.
 
-### Building the frontend
+#### Building the frontend
 
 While you don't have to worry too much about it for this exercise, you might
 want to try building the frontend:
@@ -53,7 +53,7 @@ cd client
 deno task build
 ```
 
-### Type Checking
+#### Type Checking
 
 ```sh
 deno check .
@@ -124,6 +124,7 @@ aws ecs create-service \
   --cli-input-json file://ecs/service-definition.json
 ```
 
+
 ## Troubleshooting
 
 - **Connection issues**
@@ -140,3 +141,28 @@ aws ecs create-service \
   # Check container logs
   kubectl logs -l app=tracksuit-backend
   ```
+
+
+# On Observability & Monitoring and what we might need ?
+
+
+### 1. Logging
+- We need a structured JSON logging ( middleware) in our app.
+- Include request IDs, timestamps (to enable distributed tracing and use Xray, Datadog, etc.)
+
+### 2. Metrics
+- If we expose /_metrics endpoint (something Prometheus can understand if we are using prometheus)
+- Track: request count, latency, error rate (Talking 5 vital signs os SRE here)
+
+### 3. Monitoring Stack ?
+- Option 1: Prometheus + Grafana (self-hosted)
+- Option 2: DataDog (SaaS, faster setup)
+
+### 4. Key Metrics ( for SLIs / SLO Dashboards, etc)
+- Availability (99.9% target)
+- P95 latency < 200ms
+- Error rate < 1%
+
+### 5. Alerting
+- Critical: API down, high error rate
+- Warning: Increased latency, memory usage, etc
