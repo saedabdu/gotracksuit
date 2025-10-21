@@ -1,6 +1,7 @@
-# Tracksuit Backend Service
+# Tracksuit Application
 
-A TypeScript-based backend service built with Deno
+A full-stack TypeScript application built with Deno, featuring a React frontend and RESTful API backend. Includes deployment configurations for Kubernetes and AWS ECS/Fargate with CI for automation.
+
 <!-- Link definitions -->
 
 [DenoInstall]: https://docs.deno.com/runtime/getting_started/installation/
